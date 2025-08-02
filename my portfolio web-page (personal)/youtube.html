@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My YouTube Videos</title>
+    <link rel="stylesheet" href="skin.css">
+    <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+    
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="logo">PORTFOLIO</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="main.html" class="nav-links">Home</a></li>
+                <li class="nav-item"><a href="projucts.html" class="nav-links">Projects</a></li>
+                <li class="nav-item"><a href="youtube.html" class="nav-links active">YouTube</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="youtube-header">
+            <div class="header-content">
+                <h1 class="page-title">My <span class="highlight">YouTube</span> Channel</h1>
+                <p class="page-description">Check out my latest videos and don't forget to subscribe!</p>
+                <a href="https://youtube.com/yourchannel" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-youtube"></i> Visit Channel
+                </a>
+            </div>
+        </section>
+
+        <section class="youtube-videos">
+            <div class="videos-grid">
+                <!-- Video items will be added here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">PORTFOLIO</div>
+            <div class="footer-links">
+                <a href="main.html">Home</a>
+                <a href="projucts.html">Projects</a>
+                <a href="youtube.html">YouTube</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-copy">
+                &copy; <span id="year"></span> Your Name. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // YouTube videos data
+        const youtubeVideos = [
+            {
+                id: 1,
+                title: "My Creative Process",
+                thumbnail: "https://via.placeholder.com/800x450",
+                views: "125K",
+                date: "2 weeks ago",
+                link: "#"
+            },
+            {
+                id: 2,
+                title: "Behind the Scenes: Project X",
+                thumbnail: "https://via.placeholder.com/800x450",
+                views: "89K",
+                date: "1 month ago",
+                link: "#"
+            },
+            {
+                id: 3,
+                title: "Editing Tutorial",
+                thumbnail: "https://via.placeholder.com/800x450",
+                views: "256K",
+                date: "3 months ago",
+                link: "#"
+            },
+            {
+                id: 4,
+                title: "Gear Review 2023",
+                thumbnail: "https://via.placeholder.com/800x450",
+                views: "342K",
+                date: "5 months ago",
+                link: "#"
+            },
+            {
+                id: 5,
+                title: "Travel Vlog: Japan",
+                thumbnail: "https://via.placeholder.com/800x450",
+                views: "512K",
+                date: "8 months ago",
+                link: "#"
+            },
+            {
+                id: 6,
+                title: "Cinematic Short Film",
+                thumbnail: "https://via.placeholder.com/800x450",
+                views: "1.2M",
+                date: "1 year ago",
+                link: "#"
+            }
+        ];
+
+        // Render YouTube videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const videosGrid = document.querySelector('.videos-grid');
+            
+            youtubeVideos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.innerHTML = `
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="${video.thumbnail}" alt="${video.title}">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">10:25</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>${video.title}</h3>
+                            <div class="video-stats">
+                                <span>${video.views} views</span>
+                                <span>•</span>
+                                <span>${video.date}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                videoItem.addEventListener('click', function() {
+                    window.open(video.link, '_blank');
+                });
+                
+                videosGrid.appendChild(videoItem);
+            });
+        });
+    </script>
+</body>
+</html>
